@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prank Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4CAF50;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .question {
+            font-size: 24px;
+            color: #6200ea;
+            margin-bottom: 10px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            padding: 10px;
+            font-size: 18px;
+            margin: 5px 0;
+            border: 2px solid #6200ea;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #6200ea;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .option:hover {
+            background-color: #6200ea;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            border: 2px solid #6200ea;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #6200ea;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #6200ea;
+            color: white;
+        }
+        .input-container {
+            margin-top: 20px;
+        }
+        .input-field {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            border: 2px solid #6200ea;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="firstQuestion">
+        <div class="question">
+            <h1>សំណួរ ១</h1>
+            <h2>ភ្លើងស្តុកមានប៉ុន្មានពណ៌?</h2>
+        </div>
+        <div class="options">
+            <div class="option">
+                <input type="radio" name="answer1" value="2"> 2 ពណ៌
+            </div>
+            <div class="option">
+                <input type="radio" name="answer1" value="3"> 3 ពណ៌
+            </div>
+            <div class="option">
+                <input type="radio" name="answer1" value="5"> 5 ពណ៌
+            </div>
+        </div>
+        <button onclick="nextQuestion()">បន្តទៅសំណួរ ២</button>
+    </div>
+
+    <div class="container" id="secondQuestion" style="display:none;">
+        <div class="question">
+            <h1>សំណួរ ២</h1>
+            <h2>តេីមនុស្សល្ងង់ចូលចិត្តឆ្លើយថាម៉េច?</h2>
+        </div>
+        <div class="input-container">
+            <input type="text" id="answerInput" class="input-field" placeholder="ចម្លើយរបស់អ្នកនៅទីនេះ">
+        </div>
+        <button onclick="playSound()">បញ្ជូនចម្លើយ</button>
+    </div>
+
+    <audio id="sound" src="KDMH TEE V2 - 30 USD LIMITED QUANTITEIS Saturday_ Sept 7th  ONLINE 6PM _ kdmv.io INSTORES 9AM _ cambokicks _fyp(MP3).mp3"></audio>
+
+    <script>
+        function nextQuestion() {
+            var options = document.getElementsByName('answer1');
+            var selected = false;
+
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    selected = true;
+                    break;
+                }
+            }
+
+            if (selected) {
+                document.getElementById('firstQuestion').style.display = 'none';
+                document.getElementById('secondQuestion').style.display = 'block';
+            } else {
+                alert("សូមជ្រើសរើសចម្លើយសម្រាប់សំណួរ ១ មុន!");
+            }
+        }
+
+        function playSound() {
+            var answerInput = document.getElementById('answerInput').value;
+
+            if (answerInput.trim() !== "") {
+                var sound = document.getElementById('sound');
+                
+                sound.play();
+
+                alert("សូមចុចពាក្យអូខេ!");
+
+                setTimeout(function() {
+                    sound.pause();
+                    sound.currentTime = 0;
+                }, 6000);
+
+                document.getElementById('answerInput').value = '';
+            } else {
+                alert("សូមបញ្ចូលចម្លើយមុនពេលបញ្ជូន!");
+            }
+        }
+    </script>
+</body>
+ 
